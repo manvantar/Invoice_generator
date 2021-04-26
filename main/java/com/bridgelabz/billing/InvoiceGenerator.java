@@ -17,4 +17,20 @@ public class InvoiceGenerator {
             return minimum_fare;
 
     }
+
+     /*This method used to calculate Fare for mutiple rides, which inturn calls the method calculateFare
+    to calculate the fare
+    @param array[] of ride
+    @return summation of ride's fare
+    */
+
+    public Double calculateRideFare(Ride[] ride) {
+        Double totalfare=0.0;
+        for (Ride rides: ride) {
+            totalfare+=calculateFare(rides.distance,rides.time);
+        }
+        return totalfare;
+    }
+
+
 }
