@@ -18,18 +18,18 @@ public class InvoiceGenerator {
 
     }
 
-     /*This method used to calculate Fare for mutiple rides, which inturn calls the method calculateFare
+     /*This method used to calculate Invoice Summary for mutiple rides, which inturn calls the method calculateFare
     to calculate the fare
     @param array[] of ride
-    @return summation of ride's fare
+    @return summary of ride of type InvoiceSummary
     */
 
-    public Double calculateRideFare(Ride[] ride) {
+    public InvoiceSummary calculateRideFare(Ride[] ride) {
         Double totalfare=0.0;
         for (Ride rides: ride) {
             totalfare+=calculateFare(rides.distance,rides.time);
         }
-        return totalfare;
+        return new InvoiceSummary(ride.length, totalfare);
     }
 
 
