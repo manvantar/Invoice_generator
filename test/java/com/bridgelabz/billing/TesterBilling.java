@@ -3,6 +3,10 @@ package com.bridgelabz.billing;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class TesterBilling {
 
     @Test
@@ -16,13 +20,13 @@ public class TesterBilling {
         Assertions.assertEquals(5.0,fare2);
     }
 
-    @Test
+  /*  @Test
     public void givenMultipleRides_whenCalculatedFareofMultipleRIdes_shouldReturnTotalFare(){
         InvoiceGenerator invoiceGenerator=new InvoiceGenerator();
         Ride[] ride={new Ride(2.0,5),new Ride(0.3,1)};
         Double totalFare=invoiceGenerator.calculateRideFare(ride);
         Assertions.assertEquals(30.0,totalFare);
-    }
+    }*/
 
     @Test
     public void givenMultipleRides_whenCalculated_shouldReturnSummary(){
@@ -33,4 +37,27 @@ public class TesterBilling {
         Assertions.assertEquals(actualSummary,expectedinvoiceSummary);
     }
 
+    @Test
+    public void givenUserId_shouldReturnInvoice() {
+        InvoiceGenerator invoiceGenerator = new InvoiceGenerator();
+        List<User> usersList = new ArrayList<>();
+        Ride ride1 = new Ride(3.4, 5);
+        Ride ride2 = new Ride(1.2, 34);
+        User user = new User(1, ride1);
+        User user2 = new User(2, ride2);
+        usersList.add(user);
+        usersList.add(user2);
+        Iterator<User> iterator = usersList.iterator();
+        while (iterator.hasNext()) {
+            User tempUser=iterator.next();
+            if (tempUser.id == 1) {
+                InvoiceSummary actualsummary1 = tempUser.invoiceGenerator;
+                InvoiceSummary expectedSummary= new InvoiceSummary(1, 39.0);
+                Assertions.assertEquals(actualsummary1,expectedSummary);
+            }
+        }
+    }
+
 }
+
+
