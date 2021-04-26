@@ -58,6 +58,18 @@ public class TesterBilling {
         }
     }
 
+    @Test
+    public void givenDistanceandTime_whenCalculetedPremiumFare_shouldReturnFare(){
+        InvoiceGenerator invoiceGenerator=new InvoiceGenerator();
+        double distance=2.0;
+        int time=5;
+        double fare=invoiceGenerator.calculatePremiumFare(distance,time);
+        System.out.println(fare);
+        Assertions.assertEquals(40,fare);
+        double fare2=invoiceGenerator.calculatePremiumFare(0.3,1);
+        Assertions.assertEquals(20,fare2);
+    }
+
 }
 
 
