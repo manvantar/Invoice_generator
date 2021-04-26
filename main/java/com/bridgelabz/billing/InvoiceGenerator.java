@@ -46,6 +46,7 @@ public class InvoiceGenerator {
             return  premiumMinimumFare;
         }
         return totalFare;
+
     }
 
 }
