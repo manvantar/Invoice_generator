@@ -4,6 +4,9 @@ public class InvoiceGenerator {
     public int COST_PER_TIME=1;
     public double COST_PER_KILOMETER=10;
     public double minimum_fare=5.0;
+    public double premiumMinimumFarePerKM =15.0;
+    public int premiumCostPerMinute = 2;
+    public double premiumMinimumFare = 20.0;
 
     /*This method used to calculate Fare
     @param distance,time
@@ -32,5 +35,17 @@ public class InvoiceGenerator {
         return new InvoiceSummary(ride.length, totalfare);
     }
 
+    /*This method used to calculate Premium fare
+    @param dist=distance travelled, time in minutes
+    @return premium_minimum_fare value if Totalfare is lesser than premium_minimum_fare_value
+    else return total calculated fare*/
+
+    public double calculatePremiumFare(double dist, int time) {
+        double totalFare =  dist * premiumMinimumFarePerKM + time * premiumCostPerMinute;
+        if(totalFare < premiumMinimumFare ) {
+            return  premiumMinimumFare;
+        }
+        return totalFare;
+    }
 
 }
