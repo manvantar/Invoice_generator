@@ -16,6 +16,15 @@ public class TesterBilling {
         Assertions.assertEquals(5.0,fare2);
     }
 
+    @Test
+    public void givenMultipleRides_whenCalculatedFareofMultipleRIdes_shouldReturnTotalFare(){
+        InvoiceGenerator invoiceGenerator=new InvoiceGenerator();
+        Ride[] ride={new Ride(2.0,5),new Ride(0.3,1)};
+        Double totalFare=invoiceGenerator.calculateRideFare(ride);
+        Assertions.assertEquals(30.0,totalFare);
+    }
+
+
 
 
 }
